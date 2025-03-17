@@ -1,8 +1,30 @@
-<h1>Welcome to {{hotelName}}</h1>
-<!-- [hidden] is a property binding directive that can be used to hide or show an element based on the value of the expression. -->
 <div [hidden]="hideRooms">
   <h2>Number of rooms available: {{numberOfRooms}}</h2>
 </div>
 <!-- <div [innerText]="numberOfRooms"></div> -->
-
+{{rooms?.roomsAvailable ?? 'No rooms available'}}
+<div *ngIf="rooms.roomsAvailable > 0">
+  Rooms List
+  <!-- {{roomList}} -->
+  <table>
+    <thead>
+      <tr>
+        <th>Room Number</th>
+        <th>Room Type</th>
+        <th>Price</th>
+        <th>Room Amenities</th>
+        <th>Checkin Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let room of roomList">
+        <td>{{room.roomNumber}}</td>
+        <td>{{room.roomType}}</td>
+        <td>{{room.price}}</td>
+        <td>{{room.amenities}}</td>
+        <td>{{room.checkinTime}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <button (click)="toggle()">toggle</button>
