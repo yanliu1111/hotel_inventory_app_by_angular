@@ -26,3 +26,10 @@
 > - `ngClass` - Add class dynamically.
 > - `ngStyle` - Add style dynamically.
 > - `ngModel` - Two way data binding.
+> 6. **Built-in Pipes:** DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, AsyncPipe, JsonPipe, SlicePipe.
+> 7. **Lifecycle Hooks:** ngOnChanges, ngOnInit, ngDoCheck, ngAfterContentInit, ngAfterContentChecked, ngAfterViewInit, ngAfterViewChecked, ngOnDestroy.<br>
+> Note: "constructor shouldn't have any block code, after constructor, ngOnInit will be called."
+> 8. **Component Communication:**
+> - Using `@Input` decorator, parent to child communication; using `@Output` decorator, child to parent communication.
+> - Using `@ViewChild` and `@ContentChild` decorators, to access the child component.
+> - Using Service, to communicate between components.
