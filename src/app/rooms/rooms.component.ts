@@ -10,6 +10,9 @@ export class RoomsComponent implements OnInit {
   hotelName = 'Hotel California';
   numberOfRooms = 10;
   hideRooms = false;
+
+  selectedRoom: RoomList | undefined;
+
   rooms: Room = {
     totalRooms: 10,
     roomsAvailable: 5,
@@ -57,5 +60,9 @@ export class RoomsComponent implements OnInit {
   }
   toggle() {
     this.hideRooms = !this.hideRooms;
+  }
+  selectRoom(room: RoomList) {
+    this.selectedRoom = room;
+    console.log('Selected Room:', room);
   }
 }

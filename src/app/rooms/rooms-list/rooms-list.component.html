@@ -9,6 +9,7 @@ Rooms List
       <th>Room Amenities</th>
       <th>Checkin Time</th>
       <th>Rating</th>
+      <th>Select Room</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,11 @@ Rooms List
       <td>{{room.amenities | titlecase}}</td>
       <td>{{room.checkinTime | date : 'short'}}</td>
       <td>{{room.rating | number: '1.1-3'}}</td>
+      <th>
+        <button class="btn btn-primary" (click)="selectRoom(room)">
+          Select
+        </button>
+      </th>
     </tr>
   </tbody>
 </table>
