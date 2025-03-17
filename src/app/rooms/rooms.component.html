@@ -1,1 +1,8 @@
-<p>rooms works!</p>
+<h1>Welcome to {{hotelName}}</h1>
+<!-- [hidden] is a property binding directive that can be used to hide or show an element based on the value of the expression. -->
+<div [hidden]="hideRooms">
+  <h2>Number of rooms available: {{numberOfRooms}}</h2>
+</div>
+<!-- <div [innerText]="numberOfRooms"></div> -->
+
+<button (click)="toggle()">toggle</button>
