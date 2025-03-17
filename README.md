@@ -21,7 +21,8 @@
 > 5. **Build-in Directives:** 
 > - `*ngIf` - If the condition is true, then the element will be displayed.
 > - `*ngFor` - Loop through the array and display the elements.
-> - `*ngSwitch` - Switch case statement.
+> - `*ngSwitch` - Switch case statement, `*ngSwitchCase` and `*ngSwitchDefault` are used.
+> - starts with `*` is called structural directive. Means it will modify the DOM, but this cannot add or remove the element from the DOM.
 > - `ngClass` - Add class dynamically.
 > - `ngStyle` - Add style dynamically.
 > - `ngModel` - Two way data binding.
