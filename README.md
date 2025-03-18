@@ -33,9 +33,10 @@
 > - `ngModel` - Two way data binding.
 > 6. **Built-in Pipes:** DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, AsyncPipe, JsonPipe, SlicePipe.
 > 7. **Lifecycle Hooks:** ngOnChanges, ngOnInit, ngDoCheck, ngAfterContentInit, ngAfterContentChecked, ngAfterViewInit, ngAfterViewChecked, ngOnDestroy.<br>
-> Note: **constructor** shouldn't have any block code, after constructor, ngOnInit will be called. <br>
-> **ngDoCheck** - It will be called whenever the change detection runs. You should not implement ngOnchanges and DoCheck together on same component<br>
-> we have communicating with a component which has input property and then then child component can send some data back using input/output decorator. But there is other way, you have a component but you don't make it reusable, no input/output, they are individual components. Probably assign some property or call function of this particular component, you can use ViewChild and ContentChild decorator.<br>
+  > - **Note:**
+     >    - **constructor** shouldn't have any block code, after constructor, ngOnInit will be called. <br>
+     >    - **ngDoCheck** - It will be called whenever the change detection runs. You should not implement ngOnchanges and DoCheck together on same component<br>
+    >   - We have communicating with a component which has input property and then then child component can send some data back using input/output decorator. But there is other way, you have a component but you don't make it reusable, no input/output, they are individual components. Probably assign some property or call function of this particular component, you can use** ViewChild and ContentChild** decorator.<br>
 > 
 > 8. **Component Communication:**
 > - Using `@Input` decorator, parent to child communication; using `@Output` decorator, child to parent communication.
