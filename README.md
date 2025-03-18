@@ -12,6 +12,11 @@
    - Built-in Pipes
    - Adding Bootstrap CSS to App
  - Lifecycle Hook and Component Communication
+   - ngOnInt and Component Communication using Input and Output
+   - Change Detection and ngOnChanges
+   - ngDoCheck
+   - ViewChild, ViewChildren and AfterViewInit
+   - Content Projection, AfterContentInit and OnDestroy
 
 > [!TIP]
 > 1. **Interface compiles: Descide whether you want to use interfaces or classes:** JS will be not finded that particular interface. At run time all the interface once compile your code, all the interfaces will be removed. Go ahead to use clasess when you build a production code, generally use backend applications, you should use classes for writing type, for example you come across nextjs or expressjs, you cannot take interfaces, because type is gone when you built. Use classes, and retain the type. Easy for varify the correct information.
