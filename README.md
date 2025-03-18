@@ -17,6 +17,10 @@
    - ngDoCheck
    - ViewChild, ViewChildren and AfterViewInit
    - Content Projection, AfterContentInit and OnDestroy
+ - Dependency Injection
+   - Resolution Modifiers
+   - Value Providers
+ - HttpClient and RxJs
 
 > [!TIP]
 > 1. **Interface compiles: Descide whether you want to use interfaces or classes:** JS will be not finded that particular interface. At run time all the interface once compile your code, all the interfaces will be removed. Go ahead to use clasess when you build a production code, generally use backend applications, you should use classes for writing type, for example you come across nextjs or expressjs, you cannot take interfaces, because type is gone when you built. Use classes, and retain the type. Easy for varify the correct information.
@@ -37,8 +41,11 @@
   >   - **constructor** shouldn't have any block code, after constructor, ngOnInit will be called. <br>
   >   - **ngDoCheck** - It will be called whenever the change detection runs. You should not implement ngOnchanges and DoCheck together on same component<br>
   >   - We have communicating with a component which has input property and then then child component can send some data back using input/output decorator. But there is other way, you have a component but you don't make it reusable, no input/output, they are individual components. Probably assign some property or call function of this particular component, you can use** ViewChild and ContentChild** decorator.<br>
+  >   - **ng-content** is used for content projection
 > 
 > 8. **Component Communication:**
 > - Using `@Input` decorator, parent to child communication; using `@Output` decorator, child to parent communication.
 > - Using `@ViewChild` and `@ContentChild` decorators, to access the child component.
 > - Using Service, to communicate between components.
+>
+> 9.** Dependency Injection:**
