@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Room, RoomList } from './rooms';
+
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.scss'
 })
-export class RoomsComponent implements OnInit {
+export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   hotelName = 'Hotel California';
   numberOfRooms = 10;
   hideRooms = false;
@@ -21,10 +23,14 @@ export class RoomsComponent implements OnInit {
   title: string = 'Rooms List';
   roomList: RoomList[] = [];
 
+  @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
+  @ViewChildren(HeaderComponent) headerChildrenComponent!: QueryList<HeaderComponent>;
+
   constructor() { }
   // The ngOnInit() method is a lifecycle hook that Angular calls after creating a component.
   // It is a good place to put initialization logic.
   ngOnInit(): void {
+    // console.log(this.headerComponent);
     this.roomList = [{
       roomNumber: 1,
       roomType: 'Deluxe Room',
@@ -59,6 +65,19 @@ export class RoomsComponent implements OnInit {
       rating: 2.6789
     }]
   }
+
+  // ngDoCheck() {
+  //   console.log('DoCheck Lifecycle Hook');
+  // }
+
+  ngAfterViewInit(): void {
+    this.headerComponent.title = 'Rooms View';
+    this.headerChildrenComponent.forEach((headerComponent) => { });
+  }
+  ngAfterViewChecked(): void {
+
+  }
+
   toggle() {
     this.hideRooms = !this.hideRooms;
     this.title = this.hideRooms ? 'Show Rooms' : 'Hide Rooms';
