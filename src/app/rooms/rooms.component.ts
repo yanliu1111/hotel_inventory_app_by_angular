@@ -18,6 +18,7 @@ export class RoomsComponent implements OnInit {
     roomsAvailable: 5,
     bookedRooms: 3,
   }
+  title: string = 'Rooms List';
   roomList: RoomList[] = [];
 
   constructor() { }
@@ -60,6 +61,7 @@ export class RoomsComponent implements OnInit {
   }
   toggle() {
     this.hideRooms = !this.hideRooms;
+    this.title = this.hideRooms ? 'Show Rooms' : 'Hide Rooms';
   }
   selectRoom(room: RoomList) {
     this.selectedRoom = room;
@@ -76,6 +78,7 @@ export class RoomsComponent implements OnInit {
       checkoutTime: new Date('20-Nov-2021'),
       rating: 4.5,
     }
-    this.roomList.push(room);
+    // this.roomList.push(room);
+    this.roomList = [...this.roomList, room];
   }
 }
