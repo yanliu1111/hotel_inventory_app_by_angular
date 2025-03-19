@@ -1,5 +1,5 @@
 import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, QueryList, SkipSelf, ViewChild, ViewChildren } from '@angular/core';
-import { HttpRequest, HttpClient } from '@angular/common/http';
+import { HttpRequest, HttpClient, HttpEventType } from '@angular/common/http';
 import { Room, RoomList } from './rooms';
 import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from './services/rooms.service';
@@ -35,10 +35,29 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
   @ViewChildren(HeaderComponent) headerChildrenComponent!: QueryList<HeaderComponent>;
 
+  totalBytes = 0;
+
   constructor(@SkipSelf() private roomService: RoomsService, private http: HttpClient) { }
   // The ngOnInit() method is a lifecycle hook that Angular calls after creating a component.
   // It is a good place to put initialization logic.
   ngOnInit(): void {
+    this.roomService.getPhotos().subscribe(event => {
+      switch (event.type) {
+        case HttpEventType.Sent:
+          console.log('Request has been made.');
+          break;
+        case HttpEventType.ResponseHeader:
+          console.log('Request success.');
+          break;
+        case HttpEventType.DownloadProgress:
+          this.totalBytes += event.loaded;
+          console.log('Total Bytes!!!', this.totalBytes);
+          break;
+        case HttpEventType.Response:
+          console.log(event.body);
+      }
+    });
+
     this.stream.subscribe((data) => console.log('data', data));
     this.roomService.getRooms().subscribe((rooms) => {
       this.roomList = rooms;
