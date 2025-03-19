@@ -62,6 +62,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     this.hideRooms = !this.hideRooms;
     this.title = this.hideRooms ? 'Show Rooms' : 'Hide Rooms';
   }
+
   selectRoom(room: RoomList) {
     this.selectedRoom = room;
     console.log('Selected Room:', room);
@@ -84,5 +85,28 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
       console.error('Error:', error);
     });
   }
-
+  editRoom() {
+    const room: RoomList = {
+      roomNumber: '3',
+      roomType: 'Deluxe Room',
+      amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
+      price: 666,
+      photos: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+      checkinTime: new Date('11-Nov-2021'),
+      checkoutTime: new Date('20-Nov-2021'),
+      rating: 4.5,
+    }
+    this.roomService.editRoom(room).subscribe((room) => {
+      this.roomList = this.roomList.map((r) => r.roomNumber === room.roomNumber ? room : r);
+    }, (error) => {
+      console.error('Error:', error);
+    });
+  }
+  deleteRoom() {
+    this.roomService.deleteRoom('3').subscribe((room) => {
+      this.roomList = this.roomList.filter((r) => r.roomNumber !== '3');
+    }, (error) => {
+      console.error('Error:', error);
+    });
+  }
 }

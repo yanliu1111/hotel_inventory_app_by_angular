@@ -50,7 +50,15 @@ export class RoomsService {
   }
   addRoom(room: RoomList): Observable<RoomList> {
     this.roomList = [...this.roomList, room];
-    console.log(this.roomList);
     return of(room);
+  }
+  editRoom(room: RoomList): Observable<RoomList> {
+    this.roomList = this.roomList.map((r) => r.roomNumber === room.roomNumber ? room : r);
+    return of(room);
+  }
+  deleteRoom(id: string) {
+    this.roomList = this.roomList.filter((r) => r.roomNumber !== id);
+    console.log("ididid", id);
+    return of(this.roomList);
   }
 }
