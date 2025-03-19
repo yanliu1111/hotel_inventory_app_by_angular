@@ -1,5 +1,6 @@
 # Build hotel inventory app by Angular 
-
+### version status:
+Angular 17 (standalone false)
 ## Study Notes
 > [!NOTE]
 > Learn Angular in this complete course for beginners. First you will learn the basics of Typescript and then you will learn about important Angular concepts such as binding, dependency injection, forms, routing, and more. Let's explore the youtube ✔ [Learning resources](https://www.youtube.com/watch?v=3qBXWUpoPHo&t=608s).
