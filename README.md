@@ -21,7 +21,7 @@ Angular 17 (standalone false)
  - Dependency Injection
    - Resolution Modifiers
    - Value Providers
- - HttpClient and RxJs
+ - RxJs observables 
 
 > [!TIP]
 > 1. **Interface compiles: Descide whether you want to use interfaces or classes:** JS will be not finded that particular interface. At run time all the interface once compile your code, all the interfaces will be removed. Go ahead to use clasess when you build a production code, generally use backend applications, you should use classes for writing type, for example you come across nextjs or expressjs, you cannot take interfaces, because type is gone when you built. Use classes, and retain the type. Easy for varify the correct information.
@@ -49,5 +49,14 @@ Angular 17 (standalone false)
 > - Using `@ViewChild` and `@ContentChild` decorators, to access the child component.
 > - Using Service, to communicate between components.
 > 
-> 9. **Dependency Injection:**
-> 
+> 9. **observables and observer :**
+> how observables work, we can create an observable stream that emits values and then subscribe to it to listen to those values.
+> ```ts
+>  stream = new Observable<string>((observer) => {
+>    observer.next('user1');
+>    observer.next('user2');
+>    observer.next('user3');
+>    observer.complete();
+>  });
+>```
+> 10. **Dependency Injection:**

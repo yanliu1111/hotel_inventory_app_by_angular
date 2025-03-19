@@ -2,9 +2,12 @@ export interface Room {
   totalRooms: number;
   roomsAvailable: number;
   bookedRooms: number;
+
 }
+
+
 export interface RoomList {
-  roomNumber: number;
+  roomNumber: string;
   roomType: string;
   amenities: string;
   price: number;
@@ -12,4 +15,5 @@ export interface RoomList {
   checkinTime: Date;
   checkoutTime: Date;
   rating: number;
+
 }

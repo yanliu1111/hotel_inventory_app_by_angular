@@ -1,3 +1,6 @@
+import { Observable, of } from 'rxjs';
+
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RoomList } from '../rooms';
 
@@ -6,7 +9,7 @@ import { RoomList } from '../rooms';
 })
 export class RoomsService {
   roomList: RoomList[] = [{
-    roomNumber: 1,
+    roomNumber: '1',
     roomType: 'Deluxe Room',
     amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
     price: 500,
@@ -17,7 +20,7 @@ export class RoomsService {
     rating: 4.5
   },
   {
-    roomNumber: 2,
+    roomNumber: '2',
     roomType: 'Deluxe Room',
     amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
     price: 1000,
@@ -28,7 +31,7 @@ export class RoomsService {
     rating: 4.1
   },
   {
-    roomNumber: 3,
+    roomNumber: '3',
     roomType: 'Private Suite',
     amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
     price: 15000,
@@ -41,7 +44,13 @@ export class RoomsService {
   constructor() {
     console.log('Rooms Service is Initialized ...');
   }
-  getRooms() {
-    return this.roomList;
+
+  getRooms(): Observable<RoomList[]> {
+    return of(this.roomList);
+  }
+  addRoom(room: RoomList): Observable<RoomList> {
+    this.roomList = [...this.roomList, room];
+    console.log(this.roomList);
+    return of(room);
   }
 }

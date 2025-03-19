@@ -1,8 +1,8 @@
 import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, QueryList, SkipSelf, ViewChild, ViewChildren } from '@angular/core';
 import { Room, RoomList } from './rooms';
-
 import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from './services/rooms.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-rooms',
@@ -23,6 +23,13 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   }
   title: string = 'Rooms List';
   roomList: RoomList[] = [];
+  // how observables work, we can create an observable stream that emits values and then subscribe to it to listen to those values.
+  stream = new Observable((observer) => {
+    observer.next('user1');
+    observer.next('user2');
+    observer.next('user3');
+    observer.complete();
+  });
 
   @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
   @ViewChildren(HeaderComponent) headerChildrenComponent!: QueryList<HeaderComponent>;
@@ -31,8 +38,12 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   // The ngOnInit() method is a lifecycle hook that Angular calls after creating a component.
   // It is a good place to put initialization logic.
   ngOnInit(): void {
-    // console.log(this.headerComponent);
-    this.roomList = this.roomService.getRooms();
+    this.stream.subscribe((data) => console.log('data', data));
+    this.roomService.getRooms().subscribe((rooms) => {
+      this.roomList = rooms;
+    }, (error) => {
+      console.error('Error:', error);
+    });
   }
 
   // ngDoCheck() {
@@ -57,7 +68,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   }
   addRoom() {
     const room: RoomList = {
-      roomNumber: 4,
+      roomNumber: '4',
       roomType: 'Deluxe Room',
       amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
       price: 500,
@@ -67,6 +78,11 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
       rating: 4.5,
     }
     // this.roomList.push(room);
-    this.roomList = [...this.roomList, room];
+    this.roomService.addRoom(room).subscribe((room) => {
+      this.roomList = [...this.roomList, room];
+    }, (error) => {
+      console.error('Error:', error);
+    });
   }
+
 }
