@@ -2,6 +2,7 @@ import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, QueryList,
 import { Room, RoomList } from './rooms';
 
 import { HeaderComponent } from '../header/header.component';
+import { RoomsService } from './services/rooms.service';
 
 @Component({
   selector: 'app-rooms',
@@ -26,44 +27,12 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
   @ViewChildren(HeaderComponent) headerChildrenComponent!: QueryList<HeaderComponent>;
 
-  constructor() { }
+  constructor(private roomService: RoomsService) { }
   // The ngOnInit() method is a lifecycle hook that Angular calls after creating a component.
   // It is a good place to put initialization logic.
   ngOnInit(): void {
     // console.log(this.headerComponent);
-    this.roomList = [{
-      roomNumber: 1,
-      roomType: 'Deluxe Room',
-      amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
-      price: 500,
-      photos:
-        'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-      checkinTime: new Date('11-Nov-2021'),
-      checkoutTime: new Date('20-Nov-2021'),
-      rating: 4.5
-    },
-    {
-      roomNumber: 2,
-      roomType: 'Deluxe Room',
-      amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
-      price: 1000,
-      photos:
-        'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-      checkinTime: new Date('16-Nov-2021'),
-      checkoutTime: new Date('30-Nov-2021'),
-      rating: 4.1
-    },
-    {
-      roomNumber: 3,
-      roomType: 'Private Suite',
-      amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
-      price: 15000,
-      photos:
-        'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-      checkinTime: new Date('29-Nov-2021'),
-      checkoutTime: new Date('12-Dec-2021'),
-      rating: 2.6789
-    }]
+    this.roomList = this.roomService.getRooms();
   }
 
   // ngDoCheck() {
