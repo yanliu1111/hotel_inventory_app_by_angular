@@ -1,6 +1,6 @@
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RoomList } from '../rooms';
 
@@ -41,7 +41,7 @@ export class RoomsService {
     checkoutTime: new Date('12-Dec-2021'),
     rating: 2.6789
   }]
-  constructor() {
+  constructor(private http: HttpClient) {
     console.log('Rooms Service is Initialized ...');
   }
 
@@ -60,5 +60,12 @@ export class RoomsService {
     this.roomList = this.roomList.filter((r) => r.roomNumber !== id);
     console.log("ididid", id);
     return of(this.roomList);
+  }
+  getPhotos() {
+    const request = new HttpRequest('GET', `https://jsonplaceholder.typicode.com/photos`, {
+      reportProgress: true,
+
+    });
+    return this.http.request(request);
   }
 }

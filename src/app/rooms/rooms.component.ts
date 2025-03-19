@@ -1,4 +1,5 @@
 import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, QueryList, SkipSelf, ViewChild, ViewChildren } from '@angular/core';
+import { HttpRequest, HttpClient } from '@angular/common/http';
 import { Room, RoomList } from './rooms';
 import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from './services/rooms.service';
@@ -34,7 +35,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
   @ViewChildren(HeaderComponent) headerChildrenComponent!: QueryList<HeaderComponent>;
 
-  constructor(@SkipSelf() private roomService: RoomsService) { }
+  constructor(@SkipSelf() private roomService: RoomsService, private http: HttpClient) { }
   // The ngOnInit() method is a lifecycle hook that Angular calls after creating a component.
   // It is a good place to put initialization logic.
   ngOnInit(): void {
@@ -108,5 +109,12 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     }, (error) => {
       console.error('Error:', error);
     });
+  }
+  getPhotos() {
+    const request = new HttpRequest('GET', `https://jsonplaceholder.typicode.com/photos`, {
+      reportProgress: true,
+
+    });
+    return this.http.request(request);
   }
 }
