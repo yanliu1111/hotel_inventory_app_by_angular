@@ -39,7 +39,7 @@ export class RoomsService {
     rating: 2.6789
   }]
   constructor() {
-    console.log('Rooms Service is created');
+    console.log('Rooms Service is Initialized ...');
   }
   getRooms() {
     return this.roomList;

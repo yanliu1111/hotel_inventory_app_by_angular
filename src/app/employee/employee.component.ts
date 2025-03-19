@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Self } from '@angular/core';
 
 import { RoomsService } from '../rooms/services/rooms.service';
 
@@ -10,7 +10,7 @@ import { RoomsService } from '../rooms/services/rooms.service';
 })
 export class EmployeeComponent implements OnInit {
   empName: string = 'John Doe';
-  constructor(private roomService: RoomsService) { }
+  constructor(@Self() private roomService: RoomsService) { }
   ngOnInit(): void { }
 
 }

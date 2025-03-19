@@ -6,17 +6,18 @@
       'font-size': '20px'
     }" [innerText]="rooms.roomsAvailable">
   </div>
-</div>
+  <!-- </div> -->
 
-<!-- {{rooms.roomsAvailable}} -->
-<div *ngIf="selectedRoom">
-  {{selectedRoom | json}}
-</div>
-<div>
-  <button (click)="addRoom()">Add Room</button>
+  <!-- {{rooms.roomsAvailable}} -->
+  <div *ngIf="selectedRoom">
+    {{selectedRoom | json}}
+  </div>
+  <div>
+    <button (click)="addRoom()">Add Room</button>
 
-</div>
-<div *ngIf="rooms.roomsAvailable > 0">
-  <app-rooms-list [rooms]="roomList" [title]="title" (selectedRoom)="selectRoom($event)"></app-rooms-list>
+  </div>
+  <div *ngIf="rooms.roomsAvailable > 0">
+    <app-rooms-list [rooms]="roomList" [title]="title" (selectedRoom)="selectRoom($event)"></app-rooms-list>
+  </div>
 </div>
 <button (click)="toggle()">toggle</button>

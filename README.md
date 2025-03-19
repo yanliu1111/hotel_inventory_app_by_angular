@@ -48,5 +48,6 @@ Angular 17 (standalone false)
 > - Using `@Input` decorator, parent to child communication; using `@Output` decorator, child to parent communication.
 > - Using `@ViewChild` and `@ContentChild` decorators, to access the child component.
 > - Using Service, to communicate between components.
->
-> 9.** Dependency Injection:**
+> 
+> 9. **Dependency Injection:**
+> 
