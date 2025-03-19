@@ -21,7 +21,8 @@ Angular 17 (standalone false)
  - Dependency Injection
    - Resolution Modifiers
    - Value Providers
- - RxJs observables 
+ - RxJs observables
+ - Http Put and Delete
 
 > [!TIP]
 > 1. **Interface compiles: Descide whether you want to use interfaces or classes:** JS will be not finded that particular interface. At run time all the interface once compile your code, all the interfaces will be removed. Go ahead to use clasess when you build a production code, generally use backend applications, you should use classes for writing type, for example you come across nextjs or expressjs, you cannot take interfaces, because type is gone when you built. Use classes, and retain the type. Easy for varify the correct information.
@@ -59,4 +60,4 @@ Angular 17 (standalone false)
 >    observer.complete();
 >  });
 >```
-> 10. **Dependency Injection:**
+> 10.
