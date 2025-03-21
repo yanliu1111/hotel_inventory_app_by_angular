@@ -1,4 +1,5 @@
 <app-header></app-header>
+<!-- {{room$ | async | json}} -->
 <div [hidden]="hideRooms">
   <h2>Number of rooms available</h2>
   <div [ngStyle]="{
@@ -16,8 +17,8 @@
     <button (click)="addRoom()">Add Room</button>
 
   </div>
-  <div *ngIf="rooms.roomsAvailable > 0">
-    <app-rooms-list [rooms]="roomList" [title]="title" (selectedRoom)="selectRoom($event)"></app-rooms-list>
+  <div *ngIf="room$ | async">
+    <app-rooms-list [rooms]="room$ | async" [title]="title" (selectedRoom)="selectRoom($event)"></app-rooms-list>
   </div>
 </div>
 <button (click)="toggle()">toggle</button>

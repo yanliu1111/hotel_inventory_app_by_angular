@@ -3,7 +3,8 @@ import { HttpRequest, HttpClient, HttpEventType } from '@angular/common/http';
 import { Room, RoomList } from './rooms';
 import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from './services/rooms.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject, Subscription, of, BehaviorSubject } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rooms',
@@ -36,7 +37,18 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   @ViewChildren(HeaderComponent) headerChildrenComponent!: QueryList<HeaderComponent>;
 
   totalBytes = 0;
-
+  subscription: Subscription | undefined;
+  private error$ = new BehaviorSubject<any>(null);
+  getError$ = this.error$.asObservable(); // error$ is a subject
+  rooms$ = this.roomService.getRooms().pipe(
+    catchError((error) => {
+      // console.error('Error:', error);
+      this.error$.next(error.message);
+      return of([]);
+    })
+  );
+  //$ means it is an observable
+  room$ = this.roomService.getRooms();
   constructor(@SkipSelf() private roomService: RoomsService, private http: HttpClient) { }
   // The ngOnInit() method is a lifecycle hook that Angular calls after creating a component.
   // It is a good place to put initialization logic.
@@ -59,11 +71,11 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     });
 
     this.stream.subscribe((data) => console.log('data', data));
-    this.roomService.getRooms().subscribe((rooms) => {
-      this.roomList = rooms;
-    }, (error) => {
-      console.error('Error:', error);
-    });
+    // this.subscription = this.roomService.getRooms().subscribe((rooms) => {
+    //   this.roomList = rooms;
+    // }, (error) => {
+    //   console.error('Error:', error);
+    // });
   }
 
   // ngDoCheck() {
@@ -135,5 +147,11 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
     });
     return this.http.request(request);
+  }
+  // we dont need in the memory
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

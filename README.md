@@ -60,4 +60,5 @@ Angular 17 (standalone false)
 >    observer.complete();
 >  });
 >```
-> 10.
+> 10. **Built-in Pipes:**
+> - DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, AsyncPipe, JsonPipe, SlicePipe.
