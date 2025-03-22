@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
 
+import { InitService } from './init.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,9 +10,11 @@ import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core'
 export class AppComponent implements OnInit {
   title = 'hotel-inventory-management';
   @ViewChild('name', { static: true }) name!: ElementRef;
+  constructor(private initService: InitService) {
+    console.log(initService.config);
+  }
 
   ngOnInit() {
-    console.log(this.name);
     this.name.nativeElement.innerText = 'California Hotel';
   }
 }

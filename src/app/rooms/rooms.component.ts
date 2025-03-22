@@ -4,7 +4,7 @@ import { Room, RoomList } from './rooms';
 import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from './services/rooms.service';
 import { Observable, Subject, Subscription, of, BehaviorSubject } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rooms',
@@ -47,8 +47,9 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
       return of([]);
     })
   );
-  //$ means it is an observable
-  room$ = this.roomService.getRooms();
+  roomsCount$ = this.roomService.getRooms().pipe(
+    map((rooms) => rooms.length)
+  );
   constructor(@SkipSelf() private roomService: RoomsService, private http: HttpClient) { }
   // The ngOnInit() method is a lifecycle hook that Angular calls after creating a component.
   // It is a good place to put initialization logic.

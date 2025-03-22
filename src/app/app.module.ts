@@ -1,3 +1,4 @@
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -6,10 +7,13 @@ import { ContainerComponent } from './container/container.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { InitService } from './init.service';
 import { RoomsComponent } from './rooms/rooms.component';
 import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
 
+function initFactory(InitService: InitService) {
+  return () => InitService.init();
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,13 @@ import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
     HttpClientModule,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initFactory,
+      deps: [InitService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
