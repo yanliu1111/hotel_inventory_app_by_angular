@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InitService } from './init.service';
 import { RoomsComponent } from './rooms/rooms.component';
 import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 function initFactory(InitService: InitService) {
   return () => InitService.init();
@@ -35,7 +36,8 @@ function initFactory(InitService: InitService) {
       useFactory: initFactory,
       deps: [InitService],
       multi: true
-    }
+    },
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

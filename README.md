@@ -23,6 +23,8 @@ Angular 17 (standalone false)
    - Value Providers
  - RxJs observables
  - Http Put and Delete
+ - Augular router and default route
+ - Adding Angular Material
 
 > [!TIP]
 > 1. **Interface compiles: Descide whether you want to use interfaces or classes:** JS will be not finded that particular interface. At run time all the interface once compile your code, all the interfaces will be removed. Go ahead to use clasess when you build a production code, generally use backend applications, you should use classes for writing type, for example you come across nextjs or expressjs, you cannot take interfaces, because type is gone when you built. Use classes, and retain the type. Easy for varify the correct information.
