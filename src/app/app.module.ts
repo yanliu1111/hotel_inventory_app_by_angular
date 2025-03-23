@@ -11,6 +11,12 @@ import { InitService } from './init.service';
 import { RoomsComponent } from './rooms/rooms.component';
 import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AppNavComponent } from './app-nav/app-nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 function initFactory(InitService: InitService) {
   return () => InitService.init();
@@ -22,12 +28,18 @@ function initFactory(InitService: InitService) {
     RoomsListComponent,
     HeaderComponent,
     ContainerComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    AppNavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [
     provideClientHydration(),
