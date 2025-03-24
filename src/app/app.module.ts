@@ -6,6 +6,7 @@ import { AppNavComponent } from './app-nav/app-nav.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ContainerComponent } from './container/container.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InitService } from './init.service';
@@ -15,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NotfountComponent } from './notfount/notfount.component';
+import { RoomsAddComponent } from './rooms/rooms-add/rooms-add.component';
 import { RoomsBookingComponent } from './rooms/rooms-booking/rooms-booking.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
@@ -33,7 +35,8 @@ function initFactory(InitService: InitService) {
     EmployeeComponent,
     AppNavComponent,
     NotfountComponent,
-    RoomsBookingComponent
+    RoomsBookingComponent,
+    RoomsAddComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ function initFactory(InitService: InitService) {
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration(),
