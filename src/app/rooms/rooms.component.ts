@@ -1,15 +1,17 @@
-import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, QueryList, SkipSelf, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, QueryList, SkipSelf, ViewChild, ViewChildren, OnDestroy } from '@angular/core';
 import { HttpRequest, HttpClient, HttpEventType } from '@angular/common/http';
 import { Room, RoomList } from './rooms';
 import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from './services/rooms.service';
 import { Observable, Subject, Subscription, of, BehaviorSubject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
-  styleUrl: './rooms.component.scss'
+  styleUrl: './rooms.component.scss',
+  providers: [RoomsService]
 })
 export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   hotelName = 'Hotel California';
