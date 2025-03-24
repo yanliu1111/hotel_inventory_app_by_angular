@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
+import { HoverDirective } from '../hover.directive';
 import { Router } from '@angular/router';
 
 // import { EmailvalidatorDirective } from '../emailvalidator/emailvalidator.directive';
-
-// import { HoverDirective } from '../hover.directive';
-
-
 
 @Component({
   selector: 'app-login',
