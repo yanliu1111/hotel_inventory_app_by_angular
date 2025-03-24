@@ -33,17 +33,18 @@ export class RoomsAddComponent implements OnInit {
         (data) => {
           this.successMessage = 'Room added successfully';
           console.log('Room added:', data);
+
+          // Reset the form while keeping the model intact
+          roomsForm.resetForm(this.room);
         },
         (error) => {
           console.error('Error adding room:', error);
         }
       );
-      console.log('Form data:', this.room);
     } else {
       console.error('Form is invalid');
     }
   }
-
   generateUUID(): string {
     return crypto.randomUUID(); // Use the native crypto API to generate a UUID
   }
