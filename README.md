@@ -24,8 +24,13 @@ Angular 17 (standalone false)
  - RxJs observables
  - Http Put and Delete
  - Augular router and default route
+   - ActivatedRoute Service
+   - Adanced Routing
  - Adding Angular Material
-
+ - Template Driven Forms
+   - Validation
+   - Pristine, Dirty State and Reset Form
+   - Custom Directives and Custom Validation
 > [!TIP]
 > 1. **Interface compiles: Descide whether you want to use interfaces or classes:** JS will be not finded that particular interface. At run time all the interface once compile your code, all the interfaces will be removed. Go ahead to use clasess when you build a production code, generally use backend applications, you should use classes for writing type, for example you come across nextjs or expressjs, you cannot take interfaces, because type is gone when you built. Use classes, and retain the type. Easy for varify the correct information.
 > 2. **Unit test file:** angular generates automatically unit test file. In config file `tsconfig.spec.json`, there is a setting to generate unit test file.
