@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { EmployeeComponent } from './employee/employee.component';
+import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { NotfountComponent } from './notfount/notfount.component';
 import { RoomsAddComponent } from './rooms/rooms-add/rooms-add.component';
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
   { path: 'rooms/add', component: RoomsAddComponent },
   { path: 'rooms/:id', component: RoomsBookingComponent },
-  { path: '', redirectTo: '/rooms', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: NotfountComponent }
 ];
 

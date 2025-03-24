@@ -34,7 +34,7 @@ export class RoomsAddComponent implements OnInit {
           this.successMessage = 'Room added successfully';
           console.log('Room added:', data);
 
-          // Reset the form while keeping the model intact
+          // fix: Reset the form while keeping the model intact
           roomsForm.resetForm(this.room);
         },
         (error) => {
