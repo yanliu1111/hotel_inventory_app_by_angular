@@ -8,7 +8,7 @@ import { ContainerComponent } from './container/container.component';
 import { EmailvalidatorDirective } from './emailvalidator/emailvalidator.directive';
 import { EmployeeComponent } from './employee/employee.component';
 import { FormsModule } from '@angular/forms';
-import { HeaderComponent } from './header/header.component';
+import { HeaderModule } from './header/header.module';
 import { HoverDirective } from './hover.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { InitService } from './init.service';
@@ -28,7 +28,6 @@ function initFactory(InitService: InitService) {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     ContainerComponent,
     EmployeeComponent,
     AppNavComponent,
@@ -47,7 +46,8 @@ function initFactory(InitService: InitService) {
     MatIconModule,
     MatListModule,
     FormsModule,
-    RoomsModule
+    RoomsModule,
+    HeaderModule
   ],
   providers: [
     provideClientHydration(),
