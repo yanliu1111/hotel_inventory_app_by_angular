@@ -13,9 +13,15 @@ export class HoverDirective implements OnInit {
   }
   ngOnInit(): void {
     // this.element.nativeElement.style.backgroundColor = this.color;
+    this.renderer.setStyle(this.element.nativeElement, 'backgroundColor', 'white');
+  }
+  @HostListener('mouseenter') onMouseEnter() {
     this.renderer.setStyle(this.element.nativeElement, 'backgroundColor', this.appHover);
   }
-  // @HostListener('mouseenter') onMouseEnter() {
-  //   this.renderer.setStyle(this.element.nativeElement, 'backgroundColor', 'yellow');
-  // }
+  @HostListener('mouseleave') onMouseLeave() {
+    this.renderer.setStyle(
+      this.element.nativeElement,
+      'backgroundColor',
+      'white');
+  }
 }

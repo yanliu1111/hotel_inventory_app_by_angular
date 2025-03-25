@@ -23,6 +23,7 @@ import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { LoginComponent } from './login/login.component';
 import { HoverDirective } from './hover.directive';
+import { EmailvalidatorDirective } from './emailvalidator/emailvalidator.directive';
 
 function initFactory(InitService: InitService) {
   return () => InitService.init();
@@ -40,7 +41,8 @@ function initFactory(InitService: InitService) {
     RoomsBookingComponent,
     RoomsAddComponent,
     LoginComponent,
-    HoverDirective
+    HoverDirective,
+    EmailvalidatorDirective
   ],
   imports: [
     BrowserModule,

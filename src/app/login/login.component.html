@@ -1,7 +1,8 @@
 <form>
   <div class="form-group">
-    <input #emailControl="ngModel" appHover="yellow" appEmailvalidator appHover color="Tomato" type="email"
-      class="form-control" name="name" placeholder="Provide your username" [(ngModel)]="email">
+
+    <input #emailControl="ngModel" appHover="yellow" appEmailvalidator color="Tomato" type="email" class="form-control"
+      name="name" placeholder="Provide your username" [(ngModel)]="email">
     <div>
       @if (emailControl.errors){
       <div class="alert alert-danger">Invalid email</div>}
