@@ -76,3 +76,5 @@ Angular 17 (standalone false)
 >```
 > 10. **Built-in Pipes:**
 > - DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, AsyncPipe, JsonPipe, SlicePipe.
+> 11. **HeaderModule:** We have created two feature mondules, one to show the scenario where we will not have any routing module we will have a component which is reusable and can accessed outside of its own mpdule, it is not going to be used inside its own module. Another example, we move all rooms related components inside its own rooms.module.ts. <br>
+> **So** header has own header.module.ts, and rooms has own rooms.module.ts.
