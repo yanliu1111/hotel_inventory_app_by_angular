@@ -19,8 +19,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NotfountComponent } from './notfount/notfount.component';
-import { RoomsModule } from './rooms/rooms.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+// import { RoomsModule } from './rooms/rooms.module';
+
 
 function initFactory(InitService: InitService) {
   return () => InitService.init();
@@ -38,7 +40,7 @@ function initFactory(InitService: InitService) {
   ],
   imports: [
     BrowserModule,
-    RoomsModule,
+    // RoomsModule,
     AppRoutingModule,
     HttpClientModule,
     MatToolbarModule,
