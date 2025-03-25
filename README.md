@@ -25,7 +25,14 @@ Angular 17 (standalone false)
  - Http Put and Delete
  - Augular router and default route
    - ActivatedRoute Service
-   - Adanced Routing
+   - Advanced Routing
+     - Feature and Module Routing
+     - Nested and Child Routes
+     - Lazy Loading
+     - Configure Lazy Loading using Angular CLI
+     - Using ProvidedIn Any
+     - Router Events
+     - Listening to Router Events
  - Adding Angular Material
  - Template Driven Forms
    - Validation
