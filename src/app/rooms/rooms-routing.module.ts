@@ -6,9 +6,9 @@ import { RoomsBookingComponent } from './rooms-booking/rooms-booking.component';
 import { RoomsComponent } from './rooms.component';
 
 const routes: Routes = [
-  { path: 'rooms', component: RoomsComponent },
-  { path: 'rooms/add', component: RoomsAddComponent },
-  { path: 'rooms/:id', component: RoomsBookingComponent },
+  { path: 'rooms', component: RoomsComponent, children: [{ path: 'add', component: RoomsAddComponent }, { path: ':id', component: RoomsBookingComponent }] },
+
+
 ];
 
 @NgModule({

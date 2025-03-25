@@ -13,13 +13,15 @@
   <div *ngIf="selectedRoom">
     {{selectedRoom | json}}
   </div>
+
+  <router-outlet></router-outlet>
   <div>
-    <button (click)="addRoom()">Add Room</button>
+    <button routerLink="add">Add Room</button>
   </div>
   <h1>
     Number of rooms: {{roomsCount$ | async}}
   </h1>
-  <div *ngIf="rooms$ | async">
+  <div *ngIf=" rooms$ | async">
     <app-rooms-list [rooms]="rooms$ | async" [title]="title" (selectedRoom)="selectRoom($event)"></app-rooms-list>
   </div>
 </div>
