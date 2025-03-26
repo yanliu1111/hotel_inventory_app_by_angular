@@ -19,9 +19,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  // login() {
+  //   if (this.email === "admin@gmail.com" && this.password === "admin") {
+  //     this.route.navigate(['/rooms', 'add']);
+  //   }
+  // }
   login() {
     if (this.email === "admin@gmail.com" && this.password === "admin") {
-      this.route.navigate(['/rooms', 'add']);
+      localStorage.setItem('userToken', 'your-token-here');
+      this.route.navigate(['/rooms']);
+    } else {
+      alert('Invalid credentials');
     }
   }
 
