@@ -39,6 +39,7 @@ Angular 17 (standalone false)
    - Pristine, Dirty State and Reset Form
    - Custom Directives and Custom Validation
  - Lazy Loading
+ - route guards
 > [!TIP]
 > 1. **Interface compiles: Descide whether you want to use interfaces or classes:** JS will be not finded that particular interface. At run time all the interface once compile your code, all the interfaces will be removed. Go ahead to use clasess when you build a production code, generally use backend applications, you should use classes for writing type, for example you come across nextjs or expressjs, you cannot take interfaces, because type is gone when you built. Use classes, and retain the type. Easy for varify the correct information.
 > 2. **Unit test file:** angular generates automatically unit test file. In config file `tsconfig.spec.json`, there is a setting to generate unit test file.
@@ -81,3 +82,4 @@ Angular 17 (standalone false)
 > **So** header has own header.module.ts, and rooms has own rooms.module.ts.
 > 12. **Lazy Loading:** Lazy loading is for the modules really big, users wont be used frequently, not developers. Ask the business what is the frequency how many users expecting views. As you know the user behavior, you can implement lazy loading. Other views like user profile page, user dashboard, user settings, user account
 > <br>
+> 13. **Route Guards:** canActivate, canDeactivate, resolve, canLoad, canActivateChild, canDeactivateChild.
