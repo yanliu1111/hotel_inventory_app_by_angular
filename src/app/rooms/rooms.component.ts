@@ -20,7 +20,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   hideRooms = false;
 
   selectedRoom: RoomList | undefined;
-
+  userRole: string | null = null;
   rooms: Room = {
     totalRooms: 10,
     roomsAvailable: 5,
@@ -57,6 +57,9 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   // The ngOnInit() method is a lifecycle hook that Angular calls after creating a component.
   // It is a good place to put initialization logic.
   ngOnInit(): void {
+    this.userRole = localStorage.getItem('userRole');
+    console.log('User Role:', this.userRole);
+
     this.roomService.getPhotos().subscribe(event => {
       switch (event.type) {
         case HttpEventType.Sent:
@@ -104,6 +107,10 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     console.log('Selected Room:', room);
   }
   addRoom() {
+    if (this.userRole !== 'admin') {
+      alert('Only admins can add rooms.');
+      return;
+    }
     const room: RoomList = {
       roomNumber: '4',
       roomType: 'Deluxe Room',
@@ -122,6 +129,11 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     });
   }
   editRoom() {
+    if (this.userRole !== 'admin') {
+      alert('Only admins can edit rooms.');
+      return;
+    }
+
     const room: RoomList = {
       roomNumber: '3',
       roomType: 'Deluxe Room',
@@ -130,7 +142,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
       photos: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
       checkinTime: new Date('11-Nov-2021'),
       checkoutTime: new Date('20-Nov-2021'),
-      rating: 4.5,
+      rating: 2.2,
     }
     this.roomService.editRoom(room).subscribe((room) => {
       this.roomList = this.roomList.map((r) => r.roomNumber === room.roomNumber ? room : r);
@@ -139,6 +151,10 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     });
   }
   deleteRoom() {
+    if (this.userRole !== 'admin') {
+      alert('Only admins can delete rooms.');
+      return;
+    }
     this.roomService.deleteRoom('3').subscribe((room) => {
       this.roomList = this.roomList.filter((r) => r.roomNumber !== '3');
     }, (error) => {

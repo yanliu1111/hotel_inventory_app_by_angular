@@ -16,8 +16,9 @@
 
   <router-outlet></router-outlet>
   <div>
-    <button routerLink="add">Add Room</button>
+    <button *ngIf="userRole === 'admin'" routerLink="add">Add Room</button>
   </div>
+
   <h1>
     Number of rooms: {{roomsCount$ | async}}
   </h1>
@@ -25,6 +26,11 @@
     <app-rooms-list [rooms]="rooms$ | async" [title]="title" (selectedRoom)="selectRoom($event)"></app-rooms-list>
   </div>
 </div>
-<button (click)="toggle()">toggle</button>
-<button (click)="editRoom()">editRoom</button>
-<button (click)="deleteRoom()">deleteRoom</button>
+<!-- Add Room Button (Visible only for Admin) -->
+<button *ngIf="userRole === 'admin'" (click)="addRoom()">Add Room</button>
+
+<!-- Edit Room Button (Visible only for Admin) -->
+<button *ngIf="userRole === 'admin'" (click)="editRoom()">Edit Room</button>
+
+<!-- Delete Room Button (Visible only for Admin) -->
+<button *ngIf="userRole === 'admin'" (click)="deleteRoom()">Delete Room</button>

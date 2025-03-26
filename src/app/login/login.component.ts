@@ -25,8 +25,13 @@ export class LoginComponent implements OnInit {
   //   }
   // }
   login() {
-    if (this.email === "admin@gmail.com" && this.password === "admin") {
+    if (this.email === "regular@gmail.com" && this.password === "regular") {
       localStorage.setItem('userToken', 'your-token-here');
+      localStorage.setItem('userRole', 'regular'); // Store the user's role as regular
+      this.route.navigate(['/rooms']);
+    } else if (this.email === "admin@gmail.com" && this.password === "admin") {
+      localStorage.setItem('userToken', 'your-token-here');
+      localStorage.setItem('userRole', 'admin'); // Store the user's role as admin
       this.route.navigate(['/rooms']);
     } else {
       alert('Invalid credentials');

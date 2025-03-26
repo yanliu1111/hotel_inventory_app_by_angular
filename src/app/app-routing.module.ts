@@ -5,11 +5,12 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { NotfountComponent } from './notfount/notfount.component';
 import { loginGuard } from './guards/login.guard';
+import { roomGuard } from './rooms/guards/room.guard';
 
 const routes: Routes = [
   { path: 'employee', component: EmployeeComponent, canActivate: [loginGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'rooms', loadChildren: () => import('./rooms/rooms.module').then(m => m.RoomsModule), canActivate: [loginGuard] },
+  { path: 'rooms', loadChildren: () => import('./rooms/rooms.module').then(m => m.RoomsModule), canActivate: [loginGuard, roomGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'booking', loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule), canActivate: [loginGuard] },
   { path: '**', component: NotfountComponent }
