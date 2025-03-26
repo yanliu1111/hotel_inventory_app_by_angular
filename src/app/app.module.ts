@@ -59,7 +59,11 @@ function initFactory(InitService: InitService) {
       deps: [InitService],
       multi: true
     },
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {
+      provide: 'RouteConfigToken',
+      useValue: { title: 'Home' }
+    }
   ],
   bootstrap: [AppComponent]
 })
