@@ -19,6 +19,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NotfountComponent } from './notfount/notfount.component';
+import { RouteConfigToken } from './services/routeConfig.service';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 // import { RoomsModule } from './rooms/rooms.module';
@@ -61,7 +62,7 @@ function initFactory(InitService: InitService) {
     },
     provideAnimationsAsync(),
     {
-      provide: 'RouteConfigToken',
+      provide: RouteConfigToken,
       useValue: { title: 'Home' }
     }
   ],
