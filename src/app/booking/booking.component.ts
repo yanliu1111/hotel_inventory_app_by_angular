@@ -75,18 +75,12 @@ export class BookingComponent implements OnInit {
       this.fb.group({ guestName: [''], age: new FormControl('') }),
     )
   }
+  addPassport() {
+    this.bookingForm.addControl('passport', new FormControl(''));
+  }
+  deletePassport() {
+    if (this.bookingForm.get('passport')) {
+      this.bookingForm.removeControl('passport');
+    }
+  }
 }
-// roomId: string,
-// guestEmail: string,
-// checkinDate: Date,
-// checkoutDate: Date,
-// bookingStatus: string,
-// bookingAmount: number,
-// bookingDate: Date,
-// mobileNumber: string,
-// guestName: string,
-// guestAddress: string,
-// guestCity: string,
-// guestState: string,
-// guestCountry: string,
-// guestList: Guest[]
