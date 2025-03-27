@@ -72,8 +72,14 @@ export class BookingComponent implements OnInit {
   // }
   addGuest() {
     this.guests.push(
-      this.fb.group({ guestName: [''], age: new FormControl('') }),
+      this.addGuestControl()
     )
+  }
+  addGuestControl() {
+    return this.fb.group({
+      guestName: [''],
+      age: new FormControl(''),
+    });
   }
   addPassport() {
     this.bookingForm.addControl('passport', new FormControl(''));
@@ -82,5 +88,8 @@ export class BookingComponent implements OnInit {
     if (this.bookingForm.get('passport')) {
       this.bookingForm.removeControl('passport');
     }
+  }
+  removeGuest(i: number) {
+    this.guests.removeAt(i);
   }
 }
