@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ConfigService } from '../services/config.service';
 
@@ -10,6 +10,9 @@ import { ConfigService } from '../services/config.service';
 })
 export class BookingComponent implements OnInit {
   bookingForm!: FormGroup;
+  get guests() {
+    return this.bookingForm.get('guests') as FormArray;
+  }
   constructor(private configService: ConfigService, private fb: FormBuilder) { }
   ngOnInit(): void {
     this.bookingForm = this.fb.group({
@@ -30,11 +33,47 @@ export class BookingComponent implements OnInit {
         country: [''], // Fixed typo: Country -> country
         zipCode: [''],
       }),
-      guestCount: [''],
+      guests: this.fb.array([this.fb.group({
+        guestName: [''],
+        age: new FormControl(''),
+        tnc: new FormControl(false, { validators: [Validators.requiredTrue] }),
+      })]),
     });
   }
   addBooking() {
     console.log(this.bookingForm.getRawValue());
+    // this.bookingService.bookRoom(this.bookingForm.getRawValue()
+    // ).subscribe((data)=> {console.log(data)});
+
+    this.bookingForm.reset({
+      roomId: '2',
+      guestEmail: '',
+      checkinDate: '',
+      checkoutDate: '',
+      bookingStatus: '',
+      bookingAmount: '',
+      bookingDate: '',
+      mobileNumber: '',
+      guestName: '',
+      Address: {
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        state: '',
+        country: '',
+        zipCode: '',
+      },
+      guests: [],
+      tnc: false,
+    });
+  }
+  // addBooking() {
+  //   console.log(this.bookingForm.getRawValue());
+  // }
+  addGuest() {
+    this.guests.push(
+      this.fb.group({ guestName: [''], age: new FormControl('') }),
+    )
   }
 }
 // roomId: string,
