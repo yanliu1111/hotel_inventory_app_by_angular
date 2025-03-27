@@ -16,8 +16,8 @@ export class BookingComponent implements OnInit {
   constructor(private configService: ConfigService, private fb: FormBuilder) { }
   ngOnInit(): void {
     this.bookingForm = this.fb.group({
-      roomId: new FormControl(''),
-      guestEmail: [''],
+      roomId: new FormControl({ value: '2', disabled: true }, { validators: [Validators.required] }),
+      guestEmail: ['', { validators: [Validators.required, Validators.email] }],
       checkinDate: [''],
       checkoutDate: [''],
       bookingStatus: [''],
@@ -36,8 +36,8 @@ export class BookingComponent implements OnInit {
       guests: this.fb.array([this.fb.group({
         guestName: [''],
         age: new FormControl(''),
-        tnc: new FormControl(false, { validators: [Validators.requiredTrue] }),
       })]),
+      tnc: new FormControl(false, { validators: [Validators.requiredTrue] }),
     });
   }
   addBooking() {
