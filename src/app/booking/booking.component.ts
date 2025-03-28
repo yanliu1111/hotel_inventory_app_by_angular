@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { ActivatedRoute } from '@angular/router';
 import { BookingService } from './booking.service';
 import { ConfigService } from '../services/config.service';
 import { CustomValidator } from './validators/custom-validator';
@@ -16,10 +17,12 @@ export class BookingComponent implements OnInit {
   get guests() {
     return this.bookingForm.get('guests') as FormArray;
   }
-  constructor(private configService: ConfigService, private fb: FormBuilder, private bookingService: BookingService) { }
+  constructor(private configService: ConfigService, private fb: FormBuilder, private bookingService: BookingService, private route: ActivatedRoute) { }
   ngOnInit(): void {
+    const roomId = this.route.snapshot.paramMap.get('roomid');
+    console.log(roomId);
     this.bookingForm = this.fb.group({
-      roomId: new FormControl({ value: '2', disabled: true }, { validators: [Validators.required] }),
+      roomId: new FormControl({ value: roomId, disabled: true }, { validators: [Validators.required] }),
       guestEmail: ['', { updateOn: 'blur', validators: [Validators.required, Validators.email] }],
       checkinDate: [''],
       checkoutDate: [''],
