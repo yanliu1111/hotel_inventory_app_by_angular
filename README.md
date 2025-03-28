@@ -42,7 +42,10 @@ Angular 17 (standalone false)
  - Route guards
  - Reactive Forms
  - Using RxJs Map operator
-   - mergeMap, switchMap and exhaustMap
+   - Differences between them:
+   - mergeMap: Subscribes to each new inner observable and merges their emissions, allowing multiple active subscriptions simultaneously.
+   - switchMap: Cancels the previous observable and switches to the latest one, ensuring only one inner observable is active at a time.
+   - exhaustMap: Ignores new values until the currently active inner observable completes; new emissions are dropped while the first observable is still running.
 - 
 > [!TIP]
 > 1. **Interface compiles: Descide whether you want to use interfaces or classes:** JS will be not finded that particular interface. At run time all the interface once compile your code, all the interfaces will be removed. Go ahead to use clasess when you build a production code, generally use backend applications, you should use classes for writing type, for example you come across nextjs or expressjs, you cannot take interfaces, because type is gone when you built. Use classes, and retain the type. Easy for varify the correct information.
