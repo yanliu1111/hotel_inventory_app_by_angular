@@ -18,7 +18,7 @@ pristine, if you want to see user use the form or not -->
 <form #roomsForm='ngForm' (ngSubmit)="AddRoom(roomForm)" #roomForm="ngForm">
   <div class="form-group">
     <input required minlength="3" maxlength="15" type="text" class="form-control" name="roomType"
-      [(ngModel)]="room.roomType" placeholder="Room Type" />
+      [(ngModel)]="room.roomType" placeholder="Room Type" [ngModelOptions]="{updateOn: 'blur'}" />
   </div>
 
   <div class="form-group">
