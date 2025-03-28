@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { BookingService } from './booking.service';
 import { ConfigService } from '../services/config.service';
+import { mergeMap } from 'rxjs';
 
 @Component({
   selector: 'app-booking',
@@ -13,7 +15,7 @@ export class BookingComponent implements OnInit {
   get guests() {
     return this.bookingForm.get('guests') as FormArray;
   }
-  constructor(private configService: ConfigService, private fb: FormBuilder) { }
+  constructor(private configService: ConfigService, private fb: FormBuilder, private bookingService: BookingService) { }
   ngOnInit(): void {
     this.bookingForm = this.fb.group({
       roomId: new FormControl({ value: '2', disabled: true }, { validators: [Validators.required] }),
@@ -23,7 +25,7 @@ export class BookingComponent implements OnInit {
       bookingStatus: [''],
       bookingAmount: [''],
       bookingDate: [''],
-      mobileNumber: ['', { updateOn: 'blur' }],
+      mobileNumber: [''],
       guestName: ['', [Validators.required, Validators.minLength(5)]], // Added minlength validator
       address: this.fb.group({
         addressLine1: ['', Validators.required], // Fixed typo: AddresLine1 -> addressLine1
@@ -39,8 +41,14 @@ export class BookingComponent implements OnInit {
       tnc: new FormControl(false, { validators: [Validators.requiredTrue] }),
     });
     this.getBookingData();
-    this.bookingForm.valueChanges.subscribe((data) => {
-      // console.log("data", data);
+    // this.bookingForm.valueChanges.subscribe((data) => {
+    //   this.bookingService.bookRoom(data).subscribe((data) => {
+    //   });
+    // });
+    this.bookingForm.valueChanges.pipe(
+      mergeMap((data) => this.bookingService.bookRoom(data))
+    ).subscribe((data) => {
+      console.log("mergeMap Data", data);
     });
   }
   addBooking() {
@@ -48,6 +56,9 @@ export class BookingComponent implements OnInit {
     // this.bookingService.bookRoom(this.bookingForm.getRawValue()
     // ).subscribe((data)=> {console.log(data)});
     // purpose for reset form after submit
+    // this.bookingService.bookRoom(this.bookingForm.getRawValue()).subscribe((data) => {
+    //   console.log(data);
+    // });
     this.bookingForm.reset({
       roomId: '2',
       guestEmail: '',
@@ -69,7 +80,6 @@ export class BookingComponent implements OnInit {
       guests: [],
       tnc: false,
     });
-
   }
   // addBooking() {
   //   console.log(this.bookingForm.getRawValue());

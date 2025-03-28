@@ -1,6 +1,7 @@
 import { BookingComponent } from './booking.component';
 import { BookingRoutingModule } from './booking-routing.module';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -32,7 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-US' } // Optional: Set the locale for the datepicker
