@@ -1,31 +1,31 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 <!-- {{room$ | async | json}} -->
-<div [hidden]="hideRooms">
+<!-- <div [hidden]="hideRooms">
   <h2>Number of rooms available</h2>
   <div [ngStyle]="{
       'color': rooms.roomsAvailable ? 'blue' : 'red', 
       'font-size': '20px'
     }" [innerText]="rooms.roomsAvailable">
-  </div>
-  <!-- </div> -->
+  </div> -->
+<!-- </div> -->
 
-  <!-- {{rooms.roomsAvailable}} -->
-  <div *ngIf="selectedRoom">
-    {{selectedRoom | json}}
-  </div>
+<!-- {{rooms.roomsAvailable}} -->
+<!-- <div *ngIf="selectedRoom">
+  {{selectedRoom | json}}
+</div> -->
 
-  <router-outlet></router-outlet>
-  <div>
-    <button *ngIf="userRole === 'admin'" routerLink="add">Add Room</button>
-  </div>
+<router-outlet></router-outlet>
+<!-- <div>
+  <button *ngIf="userRole === 'admin'" routerLink="add">Add Room</button>
+</div> -->
 
-  <h1>
-    Number of rooms: {{roomsCount$ | async}}
-  </h1>
-  <div *ngIf=" rooms$ | async">
-    <app-rooms-list [rooms]="rooms$ | async" [title]="title" (selectedRoom)="selectRoom($event)"></app-rooms-list>
-  </div>
+<h1>
+  Number of rooms: {{roomsCount$ | async}}
+</h1>
+<div *ngIf=" rooms$ | async">
+  <app-rooms-list [rooms]="rooms$ | async" [title]="title" (selectedRoom)="selectRoom($event)"></app-rooms-list>
 </div>
+<!-- </div> -->
 <!-- Add Room Button (Visible only for Admin) -->
 <button *ngIf="userRole === 'admin'" (click)="addRoom()">Add Room</button>
 

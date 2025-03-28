@@ -20,3 +20,10 @@
 .example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
   margin-left: 8px;
 }
+.example-button-row {
+  display: flex;
+  justify-content:flex-start; /* Align buttons to the right */
+  align-items: center; /* Vertically center the buttons */
+  gap: 10px; /* Add spacing between buttons */
+  margin-top: 20px;
+}

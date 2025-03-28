@@ -1,10 +1,10 @@
-<p>booking works!</p>
+<!-- <p>booking works!</p>
 {{bookingForm.value | json}}
 {{bookingForm.pristine | json}}
-{{bookingForm.dirty | json}}
-<div><button mat-raised-button color="primary" type="button" (click)="addPassport()">Add Passport</button></div>
-<div>
-  <button mat-raised-button color="primary" (click)="deletePassport()">Delete Passport</button>
+{{bookingForm.dirty | json}} -->
+<div class="example-button-row">
+  <button mat-raised-button color="primary" type="button" (click)="addPassport()">Add Passport</button>
+  <button mat-raised-button color="primary" type="button" (click)="deletePassport()">Delete Passport</button>
 </div>
 <form class="example-form" [formGroup]="bookingForm" (ngSubmit)="addBooking()">
   <mat-form-field *ngIf="this.bookingForm.get('passport')">
