@@ -25,7 +25,7 @@
     <mat-label>Guest Name</mat-label>
     <input type="text" matInput formControlName="guestName" placeholder="Guest Name">
 
-    <!-- {{bookingForm.get('guestName')?.errors | json}} -->
+    {{bookingForm.get('guestName')?.errors | json}}
     <mat-error *ngIf="bookingForm.get('guestName')?.hasError('minlength')">
       Please enter minimum 5 character!
     </mat-error>

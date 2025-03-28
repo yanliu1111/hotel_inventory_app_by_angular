@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 
 import { BookingService } from './booking.service';
 import { ConfigService } from '../services/config.service';
+import { CustomValidator } from './validators/custom-validator';
 import { mergeMap } from 'rxjs';
 
 @Component({
@@ -26,7 +27,7 @@ export class BookingComponent implements OnInit {
       bookingAmount: [''],
       bookingDate: [''],
       mobileNumber: [''],
-      guestName: ['', [Validators.required, Validators.minLength(5)]], // Added minlength validator
+      guestName: ['', [Validators.required, Validators.minLength(5), CustomValidator.ValidateName, CustomValidator.ValidateSpecialChar('*')]], // Added minlength validator
       address: this.fb.group({
         addressLine1: ['', Validators.required], // Fixed typo: AddresLine1 -> addressLine1
         addressLine2: [''],
@@ -45,11 +46,11 @@ export class BookingComponent implements OnInit {
     //   this.bookingService.bookRoom(data).subscribe((data) => {
     //   });
     // });
-    this.bookingForm.valueChanges.pipe(
-      mergeMap((data) => this.bookingService.bookRoom(data))
-    ).subscribe((data) => {
-      console.log("mergeMap Data", data);
-    });
+    // this.bookingForm.valueChanges.pipe(
+    //   mergeMap((data) => this.bookingService.bookRoom(data))
+    // ).subscribe((data) => {
+    //  console.log("mergeMap Data", data);
+    // });
   }
   addBooking() {
     console.log(this.bookingForm.getRawValue());
