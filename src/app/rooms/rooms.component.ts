@@ -7,6 +7,7 @@ import { Observable, Subject, Subscription, of, BehaviorSubject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ConfigService } from '../services/config.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-rooms',
@@ -50,6 +51,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
       return of([]);
     })
   );
+  priceFilter = new FormControl(0);
   roomsCount$ = this.roomService.getRooms().pipe(
     map((rooms) => rooms.length)
   );
