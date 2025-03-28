@@ -24,19 +24,18 @@ export class BookingComponent implements OnInit {
       bookingAmount: [''],
       bookingDate: [''],
       mobileNumber: [''],
-      guestName: [''],
+      guestName: ['', [Validators.required, Validators.minLength(5)]], // Added minlength validator
       address: this.fb.group({
-        addressLine1: [''], // Fixed typo: AddresLine1 -> addressLine1
-        addressLine2: [''], // Fixed typo: AddresLine2 -> addressLine2
-        city: [''], // Fixed typo: City -> city
-        state: [''], // Fixed typo: State -> state
-        country: [''], // Fixed typo: Country -> country
+        addressLine1: ['', Validators.required], // Fixed typo: AddresLine1 -> addressLine1
+        addressLine2: [''],
+        city: ['', Validators.required],
+        state: ['', Validators.required],
+        country: [''],
         zipCode: [''],
       }),
-      guests: this.fb.array([this.fb.group({
-        guestName: [''],
-        age: new FormControl(''),
-      })]),
+      guests: this.fb.array([
+        this.addGuestControl()
+      ]),
       tnc: new FormControl(false, { validators: [Validators.requiredTrue] }),
     });
   }
@@ -44,7 +43,7 @@ export class BookingComponent implements OnInit {
     console.log(this.bookingForm.getRawValue());
     // this.bookingService.bookRoom(this.bookingForm.getRawValue()
     // ).subscribe((data)=> {console.log(data)});
-
+    // purpose for reset form after submit
     this.bookingForm.reset({
       roomId: '2',
       guestEmail: '',
@@ -77,7 +76,7 @@ export class BookingComponent implements OnInit {
   }
   addGuestControl() {
     return this.fb.group({
-      guestName: [''],
+      guestName: ['', Validators.required],
       age: new FormControl(''),
     });
   }
