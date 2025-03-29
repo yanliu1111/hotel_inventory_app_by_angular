@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -8,6 +8,7 @@ import { ContainerComponent } from './container/container.component';
 import { EmailvalidatorDirective } from './emailvalidator/emailvalidator.directive';
 import { EmployeeComponent } from './employee/employee.component';
 import { FormsModule } from '@angular/forms';
+import { GlobalErrorHandling } from './errorhandler.service';
 import { HeaderModule } from './header/header.module';
 import { HoverDirective } from './hover.directive';
 import { HttpClientModule } from '@angular/common/http';
@@ -64,7 +65,9 @@ function initFactory(InitService: InitService) {
     {
       provide: RouteConfigToken,
       useValue: { title: 'Home' }
-    }
+    },
+    { provide: ErrorHandler, useClass: GlobalErrorHandling }
+
   ],
   bootstrap: [AppComponent]
 })
