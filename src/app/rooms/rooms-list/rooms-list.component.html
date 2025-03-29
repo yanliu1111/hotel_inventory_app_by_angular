@@ -13,7 +13,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr [ngClass]="e ? 'even':'odd'" *ngFor="let room of rooms; let e=even; let o=odd">
+    <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of (rooms || []) | filter:price; let e = even; let o = odd">
+
       <td>{{e ? 'Even' : 'Odd'}}</td>
       <td>{{room.roomNumber}}</td>
       <td>{{room.roomType}}</td>

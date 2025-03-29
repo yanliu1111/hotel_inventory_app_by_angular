@@ -6,11 +6,12 @@ import { RoomList } from '../rooms';
   selector: 'app-rooms-list',
   templateUrl: './rooms-list.component.html',
   styleUrl: './rooms-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RoomsListComponent implements OnInit {
   @Input() rooms: RoomList[] | null = [];
   @Input() title: string = '';
+  @Input() price = 0;
   @Output() selectedRoom = new EventEmitter<RoomList>();
   constructor() { }
 
